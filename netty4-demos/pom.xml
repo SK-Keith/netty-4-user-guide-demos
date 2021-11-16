@@ -6,7 +6,10 @@
 	<groupId>com.waylau</groupId>
 	<artifactId>netty4-demos</artifactId>
 	<version>1.0.0</version>
-	<packaging>jar</packaging>
+	<modules>
+		<module>netty-self</module>
+	</modules>
+	<packaging>pom</packaging>
 
 	<name>netty4-demos</name>
 	<url>https://waylau.com</url>
