@@ -26,20 +26,20 @@ public class Server {
             socketChannel.socket().bind(address);
             System.out.println("NonBlokingEchoServer已启动，端口：" + port);
 
-            // 创建buffer 4k,文件17k,所以会循环5次
-            ByteBuffer byteBuffer = ByteBuffer.allocate(4 * 1024);
+            // 创建buffer
+            ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
             while (true) {
                 acceptChannel = socketChannel.accept();
+                long startTime = System.currentTimeMillis();
                 fileChannel = FileChannel.open(
-                        Paths.get("D:\\workspackGW\\netty-4-user-guide-demos\\netty4-demos\\" + new Date().getTime() + ".jpg") ,
+                        Paths.get("D:\\workspackGW\\netty-4-user-guide-demos\\netty4-demos\\" + new Date().getTime() + ".zip") ,
                         StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE);
-                int i = 0;
                 while (acceptChannel.read(byteBuffer) != -1) {
-                    System.out.println("第" + ++i + "次");
                     byteBuffer.flip();
                     fileChannel.write(byteBuffer);
                     byteBuffer.rewind();
                 }
+                System.out.println("服务端耗时：" + (System.currentTimeMillis()- startTime));
                 acceptChannel.close();
                 fileChannel.close();
                 byteBuffer.clear();
