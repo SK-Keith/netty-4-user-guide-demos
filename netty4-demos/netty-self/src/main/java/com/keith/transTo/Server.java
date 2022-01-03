@@ -8,7 +8,6 @@ import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.Date;
 
 /**
  * @author MX.Y
@@ -32,7 +31,7 @@ public class Server {
                 acceptChannel = socketChannel.accept();
                 long startTime = System.currentTimeMillis();
                 fileChannel = FileChannel.open(
-                        Paths.get("D:\\workspackGW\\netty-4-user-guide-demos\\netty4-demos\\" + new Date().getTime() + ".zip") ,
+                        Paths.get("D:\\workspackGW\\netty-4-user-guide-demos\\netty4-demos\\" + System.currentTimeMillis() + ".zip") ,
                         StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE);
                 while (acceptChannel.read(byteBuffer) != -1) {
                     byteBuffer.flip();

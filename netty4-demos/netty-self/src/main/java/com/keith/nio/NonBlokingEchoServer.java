@@ -1,7 +1,7 @@
 /**
  * Welcome to https://waylau.com
  */
-package com.keith;
+package com.keith.nio;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -87,7 +87,7 @@ public class NonBlokingEchoServer {
 						client.read(buff);
 
 						System.out.println(client.getRemoteAddress() 
-								+ " -> NonBlokingEchoServer：" + buff.toString());
+								+ " -> Server：" + buff.toString());
 
 						key.interestOps(SelectionKey.OP_WRITE);
 						// 打印1，会出现中文乱码
@@ -114,7 +114,7 @@ public class NonBlokingEchoServer {
 						output.flip();
 						client.write(output);
 
-						System.out.println("NonBlokingEchoServer  -> " 
+						System.out.println("Server  -> "
 								+ client.getRemoteAddress() + "：" + output.toString());
 
 						output.compact();

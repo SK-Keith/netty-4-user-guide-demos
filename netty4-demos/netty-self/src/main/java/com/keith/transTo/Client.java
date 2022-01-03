@@ -7,6 +7,7 @@ import java.nio.channels.FileChannel;
 import java.nio.channels.SocketChannel;
 
 /**
+ * 使用NIO 零拷贝方法传递transferTo一个大文件
  * @author MX.Y
  * @DATE 2021/11/17 9:28
  * @qq 2690399241
