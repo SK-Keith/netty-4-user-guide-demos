@@ -95,15 +95,15 @@ public class NonBlokingEchoServer {
 
 					// 可写
 					if (key.isWritable()) {
-						SocketChannel client = (SocketChannel) key.channel();
-						ByteBuffer output = (ByteBuffer) key.attachment();
-						output.flip();
-						client.write(output);
+						SocketChannel socketChannel = (SocketChannel) key.channel();
+						ByteBuffer byteBuffer = (ByteBuffer) key.attachment();
+						byteBuffer.flip();
+						socketChannel.write(byteBuffer);
 
 						System.out.println("NonBlokingEchoServer  -> " 
-								+ client.getRemoteAddress() + "：" + output.toString());
+								+ socketChannel.getRemoteAddress() + "：" + byteBuffer.toString());
 
-						output.compact();
+						byteBuffer.compact();
 
 						key.interestOps(SelectionKey.OP_READ);
 					}

@@ -28,6 +28,9 @@ public class GroupChatServer {
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
+                    // 临时存放已完成三次握手的请求的队列的最大长度。
+                    // 如果未设置或所设置的值小于1，Java将使用默认值50。
+                    // 如果大于队列的最大长度，请求会被拒绝
                     .option(ChannelOption.SO_BACKLOG, 128)
                     .childOption(ChannelOption.SO_KEEPALIVE, true)
                     .childHandler(new ChannelInitializer<SocketChannel>() {

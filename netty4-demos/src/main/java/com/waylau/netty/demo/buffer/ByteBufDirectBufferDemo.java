@@ -45,7 +45,7 @@ public class ByteBufDirectBufferDemo {
 	/**
 	 * 打印出Buffer的信息
 	 * 
-	 * @param buffer
+	 * @param array
 	 */
 	private static void printBuffer(byte[] array, int offset, int len) {
 		System.out.println("array：" + array);

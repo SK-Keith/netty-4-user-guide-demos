@@ -40,9 +40,9 @@ public final class DatagramChannelEchoClient {
 		try {
 			Bootstrap b = new Bootstrap();
 			b.group(group)
-			.channel(NioDatagramChannel.class)
-			.option(ChannelOption.SO_BROADCAST, true)
-			.handler(new DatagramChannelEchoClientHandler());
+				.channel(NioDatagramChannel.class)
+				.option(ChannelOption.SO_BROADCAST, true)
+				.handler(new DatagramChannelEchoClientHandler());
 
 			// 绑定端口
 			ChannelFuture f = b.bind(port).sync();
