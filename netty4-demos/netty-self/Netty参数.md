@@ -19,6 +19,7 @@ server.group(boss,worker)//设置时间循环对象，前者用来处理accept�
                 .option(ChannelOption.SO_KEEPALIVE,true)
                 //启用心跳，双方TCP套接字建立连接后（即都进入ESTABLISHED状态），
                 // 并且在两个小时左右上层没有任何数据传输的情况下，这套机制才会被激活，TCP会自动发送一个活动探测数据报文
+                // 对应用层的程序而言没有什么用。可以通过应用层实现了解服务端或客户端状态，而决定是否继续维持该Socket
                 .option(ChannelOption.TCP_NODELAY,true)
                 //TCP协议中，TCP总是希望每次发送的数据足够大，避免网络中充满了小数据块。
                 // Nagle算法就是为了尽可能的发送大数据快。
